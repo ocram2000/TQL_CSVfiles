@@ -1,0 +1,23 @@
+LOAD TABLE teams AS teams.csv;
+
+CREATE TABLE HOJE (hj string (255), dia int (10));
+CREATE TABLE MESES;
+
+DROP TABLE MESES;
+
+ALTER TABLE sales ADD COLUMN test;
+
+COMMENT ON TABLE teams IS "#Employee information";
+
+SHOW TABLE teams;
+
+SAVE TABLE teams AS newteams.csv;
+
+PROCEDURE equipas DO LOAD TABLE teams FROM teams.csv; SHOW TABLE teams; END; Grammar not csv
+
+SELECT DIA FROM DIAS WHERE dia > 14 AND/OR noite <= 15; Grammar not csv
+SELECT DIA FROM DIAS WHERE dia > 14; Grammar not csv
+SELECT OWNER FROM teams;
+
+
+LOAD DROP SHOW COMMENT SAVE ALTER and CREATE, WORK BOTH GRAMMAR AND CSV

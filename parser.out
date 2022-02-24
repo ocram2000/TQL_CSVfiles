@@ -1,0 +1,1107 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    MODIFY
+
+Grammar
+
+Rule 0     S' -> A
+Rule 1     A -> procedurecommand
+Rule 2     A -> multicommand
+Rule 3     procedurecommand -> PROCEDURE VAR DO multicommand END ;
+Rule 4     multicommand -> command
+Rule 5     multicommand -> multicommand command
+Rule 6     command -> commandcreate ;
+Rule 7     command -> commandshow ;
+Rule 8     command -> commandalter ;
+Rule 9     command -> commandcomment ;
+Rule 10    command -> commandsave ;
+Rule 11    command -> commandselect ;
+Rule 12    command -> commanddrop ;
+Rule 13    command -> commandload ;
+Rule 14    commandload -> LOAD TABLE VAR FROM csvfile
+Rule 15    commandcreate -> CREATE TABLE VAR ( argument )
+Rule 16    commandcreate -> CREATE TABLE VAR
+Rule 17    commandshow -> SHOW TABLE VAR
+Rule 18    commanddrop -> DROP TABLE VAR
+Rule 19    commandalter -> ALTER TABLE VAR ADD COLUMN VAR
+Rule 20    commandalter -> ALTER TABLE VAR DROP COLUMN VAR
+Rule 21    commandcomment -> COMMENT ON TABLE VAR IS comment
+Rule 22    commandsave -> SAVE TABLE VAR AS csvfile
+Rule 23    commandselect -> SELECT VAR FROM VAR
+Rule 24    commandselect -> SELECT VAR FROM VAR wherecomparison
+Rule 25    argument -> subargument
+Rule 26    argument -> <empty>
+Rule 27    argument -> argument , subargument
+Rule 28    subargument -> VAR VAR ( NUMBER )
+Rule 29    comment -> COMMASTRING
+Rule 30    wherecomparison -> WHERE COMPARISON
+Rule 31    wherecomparison -> WHERE COMPARISON ORAND COMPARISON
+Rule 32    wherecomparison -> <empty>
+Rule 33    COMPARISON -> VAR > NUMBER
+Rule 34    COMPARISON -> VAR < NUMBER
+Rule 35    COMPARISON -> VAR DIFFERENT NUMBER
+Rule 36    COMPARISON -> VAR GREATEREQUALTHAN NUMBER
+Rule 37    COMPARISON -> VAR LESSEQUALTHAN NUMBER
+Rule 38    ORAND -> OR
+Rule 39    ORAND -> AND
+
+Terminals, with rules where they appear
+
+(                    : 15 28
+)                    : 15 28
+,                    : 27
+;                    : 3 6 7 8 9 10 11 12 13
+<                    : 34
+>                    : 33
+ADD                  : 19
+ALTER                : 19 20
+AND                  : 39
+AS                   : 22
+COLUMN               : 19 20
+COMMASTRING          : 29
+COMMENT              : 21
+CREATE               : 15 16
+DIFFERENT            : 35
+DO                   : 3
+DROP                 : 18 20
+END                  : 3
+FROM                 : 14 23 24
+GREATEREQUALTHAN     : 36
+IS                   : 21
+LESSEQUALTHAN        : 37
+LOAD                 : 14
+MODIFY               : 
+NUMBER               : 28 33 34 35 36 37
+ON                   : 21
+OR                   : 38
+PROCEDURE            : 3
+SAVE                 : 22
+SELECT               : 23 24
+SHOW                 : 17
+TABLE                : 14 15 16 17 18 19 20 21 22
+VAR                  : 3 14 15 16 17 18 19 19 20 20 21 22 23 23 24 24 28 28 33 34 35 36 37
+WHERE                : 30 31
+csvfile              : 14 22
+error                : 
+
+Nonterminals, with rules where they appear
+
+A                    : 0
+COMPARISON           : 30 31 31
+ORAND                : 31
+argument             : 15 27
+command              : 4 5
+commandalter         : 8
+commandcomment       : 9
+commandcreate        : 6
+commanddrop          : 12
+commandload          : 13
+commandsave          : 10
+commandselect        : 11
+commandshow          : 7
+comment              : 21
+multicommand         : 2 3 5
+procedurecommand     : 1
+subargument          : 25 27
+wherecomparison      : 24
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . A
+    (1) A -> . procedurecommand
+    (2) A -> . multicommand
+    (3) procedurecommand -> . PROCEDURE VAR DO multicommand END ;
+    (4) multicommand -> . command
+    (5) multicommand -> . multicommand command
+    (6) command -> . commandcreate ;
+    (7) command -> . commandshow ;
+    (8) command -> . commandalter ;
+    (9) command -> . commandcomment ;
+    (10) command -> . commandsave ;
+    (11) command -> . commandselect ;
+    (12) command -> . commanddrop ;
+    (13) command -> . commandload ;
+    (15) commandcreate -> . CREATE TABLE VAR ( argument )
+    (16) commandcreate -> . CREATE TABLE VAR
+    (17) commandshow -> . SHOW TABLE VAR
+    (19) commandalter -> . ALTER TABLE VAR ADD COLUMN VAR
+    (20) commandalter -> . ALTER TABLE VAR DROP COLUMN VAR
+    (21) commandcomment -> . COMMENT ON TABLE VAR IS comment
+    (22) commandsave -> . SAVE TABLE VAR AS csvfile
+    (23) commandselect -> . SELECT VAR FROM VAR
+    (24) commandselect -> . SELECT VAR FROM VAR wherecomparison
+    (18) commanddrop -> . DROP TABLE VAR
+    (14) commandload -> . LOAD TABLE VAR FROM csvfile
+
+    PROCEDURE       shift and go to state 4
+    CREATE          shift and go to state 14
+    SHOW            shift and go to state 15
+    ALTER           shift and go to state 16
+    COMMENT         shift and go to state 18
+    SAVE            shift and go to state 19
+    SELECT          shift and go to state 20
+    DROP            shift and go to state 17
+    LOAD            shift and go to state 21
+
+    A                              shift and go to state 1
+    procedurecommand               shift and go to state 2
+    multicommand                   shift and go to state 3
+    command                        shift and go to state 5
+    commandcreate                  shift and go to state 6
+    commandshow                    shift and go to state 7
+    commandalter                   shift and go to state 8
+    commandcomment                 shift and go to state 9
+    commandsave                    shift and go to state 10
+    commandselect                  shift and go to state 11
+    commanddrop                    shift and go to state 12
+    commandload                    shift and go to state 13
+
+state 1
+
+    (0) S' -> A .
+
+
+
+state 2
+
+    (1) A -> procedurecommand .
+
+    $end            reduce using rule 1 (A -> procedurecommand .)
+
+
+state 3
+
+    (2) A -> multicommand .
+    (5) multicommand -> multicommand . command
+    (6) command -> . commandcreate ;
+    (7) command -> . commandshow ;
+    (8) command -> . commandalter ;
+    (9) command -> . commandcomment ;
+    (10) command -> . commandsave ;
+    (11) command -> . commandselect ;
+    (12) command -> . commanddrop ;
+    (13) command -> . commandload ;
+    (15) commandcreate -> . CREATE TABLE VAR ( argument )
+    (16) commandcreate -> . CREATE TABLE VAR
+    (17) commandshow -> . SHOW TABLE VAR
+    (19) commandalter -> . ALTER TABLE VAR ADD COLUMN VAR
+    (20) commandalter -> . ALTER TABLE VAR DROP COLUMN VAR
+    (21) commandcomment -> . COMMENT ON TABLE VAR IS comment
+    (22) commandsave -> . SAVE TABLE VAR AS csvfile
+    (23) commandselect -> . SELECT VAR FROM VAR
+    (24) commandselect -> . SELECT VAR FROM VAR wherecomparison
+    (18) commanddrop -> . DROP TABLE VAR
+    (14) commandload -> . LOAD TABLE VAR FROM csvfile
+
+    $end            reduce using rule 2 (A -> multicommand .)
+    CREATE          shift and go to state 14
+    SHOW            shift and go to state 15
+    ALTER           shift and go to state 16
+    COMMENT         shift and go to state 18
+    SAVE            shift and go to state 19
+    SELECT          shift and go to state 20
+    DROP            shift and go to state 17
+    LOAD            shift and go to state 21
+
+    command                        shift and go to state 22
+    commandcreate                  shift and go to state 6
+    commandshow                    shift and go to state 7
+    commandalter                   shift and go to state 8
+    commandcomment                 shift and go to state 9
+    commandsave                    shift and go to state 10
+    commandselect                  shift and go to state 11
+    commanddrop                    shift and go to state 12
+    commandload                    shift and go to state 13
+
+state 4
+
+    (3) procedurecommand -> PROCEDURE . VAR DO multicommand END ;
+
+    VAR             shift and go to state 23
+
+
+state 5
+
+    (4) multicommand -> command .
+
+    CREATE          reduce using rule 4 (multicommand -> command .)
+    SHOW            reduce using rule 4 (multicommand -> command .)
+    ALTER           reduce using rule 4 (multicommand -> command .)
+    COMMENT         reduce using rule 4 (multicommand -> command .)
+    SAVE            reduce using rule 4 (multicommand -> command .)
+    SELECT          reduce using rule 4 (multicommand -> command .)
+    DROP            reduce using rule 4 (multicommand -> command .)
+    LOAD            reduce using rule 4 (multicommand -> command .)
+    $end            reduce using rule 4 (multicommand -> command .)
+    END             reduce using rule 4 (multicommand -> command .)
+
+
+state 6
+
+    (6) command -> commandcreate . ;
+
+    ;               shift and go to state 24
+
+
+state 7
+
+    (7) command -> commandshow . ;
+
+    ;               shift and go to state 25
+
+
+state 8
+
+    (8) command -> commandalter . ;
+
+    ;               shift and go to state 26
+
+
+state 9
+
+    (9) command -> commandcomment . ;
+
+    ;               shift and go to state 27
+
+
+state 10
+
+    (10) command -> commandsave . ;
+
+    ;               shift and go to state 28
+
+
+state 11
+
+    (11) command -> commandselect . ;
+
+    ;               shift and go to state 29
+
+
+state 12
+
+    (12) command -> commanddrop . ;
+
+    ;               shift and go to state 30
+
+
+state 13
+
+    (13) command -> commandload . ;
+
+    ;               shift and go to state 31
+
+
+state 14
+
+    (15) commandcreate -> CREATE . TABLE VAR ( argument )
+    (16) commandcreate -> CREATE . TABLE VAR
+
+    TABLE           shift and go to state 32
+
+
+state 15
+
+    (17) commandshow -> SHOW . TABLE VAR
+
+    TABLE           shift and go to state 33
+
+
+state 16
+
+    (19) commandalter -> ALTER . TABLE VAR ADD COLUMN VAR
+    (20) commandalter -> ALTER . TABLE VAR DROP COLUMN VAR
+
+    TABLE           shift and go to state 34
+
+
+state 17
+
+    (18) commanddrop -> DROP . TABLE VAR
+
+    TABLE           shift and go to state 35
+
+
+state 18
+
+    (21) commandcomment -> COMMENT . ON TABLE VAR IS comment
+
+    ON              shift and go to state 36
+
+
+state 19
+
+    (22) commandsave -> SAVE . TABLE VAR AS csvfile
+
+    TABLE           shift and go to state 37
+
+
+state 20
+
+    (23) commandselect -> SELECT . VAR FROM VAR
+    (24) commandselect -> SELECT . VAR FROM VAR wherecomparison
+
+    VAR             shift and go to state 38
+
+
+state 21
+
+    (14) commandload -> LOAD . TABLE VAR FROM csvfile
+
+    TABLE           shift and go to state 39
+
+
+state 22
+
+    (5) multicommand -> multicommand command .
+
+    CREATE          reduce using rule 5 (multicommand -> multicommand command .)
+    SHOW            reduce using rule 5 (multicommand -> multicommand command .)
+    ALTER           reduce using rule 5 (multicommand -> multicommand command .)
+    COMMENT         reduce using rule 5 (multicommand -> multicommand command .)
+    SAVE            reduce using rule 5 (multicommand -> multicommand command .)
+    SELECT          reduce using rule 5 (multicommand -> multicommand command .)
+    DROP            reduce using rule 5 (multicommand -> multicommand command .)
+    LOAD            reduce using rule 5 (multicommand -> multicommand command .)
+    $end            reduce using rule 5 (multicommand -> multicommand command .)
+    END             reduce using rule 5 (multicommand -> multicommand command .)
+
+
+state 23
+
+    (3) procedurecommand -> PROCEDURE VAR . DO multicommand END ;
+
+    DO              shift and go to state 40
+
+
+state 24
+
+    (6) command -> commandcreate ; .
+
+    CREATE          reduce using rule 6 (command -> commandcreate ; .)
+    SHOW            reduce using rule 6 (command -> commandcreate ; .)
+    ALTER           reduce using rule 6 (command -> commandcreate ; .)
+    COMMENT         reduce using rule 6 (command -> commandcreate ; .)
+    SAVE            reduce using rule 6 (command -> commandcreate ; .)
+    SELECT          reduce using rule 6 (command -> commandcreate ; .)
+    DROP            reduce using rule 6 (command -> commandcreate ; .)
+    LOAD            reduce using rule 6 (command -> commandcreate ; .)
+    $end            reduce using rule 6 (command -> commandcreate ; .)
+    END             reduce using rule 6 (command -> commandcreate ; .)
+
+
+state 25
+
+    (7) command -> commandshow ; .
+
+    CREATE          reduce using rule 7 (command -> commandshow ; .)
+    SHOW            reduce using rule 7 (command -> commandshow ; .)
+    ALTER           reduce using rule 7 (command -> commandshow ; .)
+    COMMENT         reduce using rule 7 (command -> commandshow ; .)
+    SAVE            reduce using rule 7 (command -> commandshow ; .)
+    SELECT          reduce using rule 7 (command -> commandshow ; .)
+    DROP            reduce using rule 7 (command -> commandshow ; .)
+    LOAD            reduce using rule 7 (command -> commandshow ; .)
+    $end            reduce using rule 7 (command -> commandshow ; .)
+    END             reduce using rule 7 (command -> commandshow ; .)
+
+
+state 26
+
+    (8) command -> commandalter ; .
+
+    CREATE          reduce using rule 8 (command -> commandalter ; .)
+    SHOW            reduce using rule 8 (command -> commandalter ; .)
+    ALTER           reduce using rule 8 (command -> commandalter ; .)
+    COMMENT         reduce using rule 8 (command -> commandalter ; .)
+    SAVE            reduce using rule 8 (command -> commandalter ; .)
+    SELECT          reduce using rule 8 (command -> commandalter ; .)
+    DROP            reduce using rule 8 (command -> commandalter ; .)
+    LOAD            reduce using rule 8 (command -> commandalter ; .)
+    $end            reduce using rule 8 (command -> commandalter ; .)
+    END             reduce using rule 8 (command -> commandalter ; .)
+
+
+state 27
+
+    (9) command -> commandcomment ; .
+
+    CREATE          reduce using rule 9 (command -> commandcomment ; .)
+    SHOW            reduce using rule 9 (command -> commandcomment ; .)
+    ALTER           reduce using rule 9 (command -> commandcomment ; .)
+    COMMENT         reduce using rule 9 (command -> commandcomment ; .)
+    SAVE            reduce using rule 9 (command -> commandcomment ; .)
+    SELECT          reduce using rule 9 (command -> commandcomment ; .)
+    DROP            reduce using rule 9 (command -> commandcomment ; .)
+    LOAD            reduce using rule 9 (command -> commandcomment ; .)
+    $end            reduce using rule 9 (command -> commandcomment ; .)
+    END             reduce using rule 9 (command -> commandcomment ; .)
+
+
+state 28
+
+    (10) command -> commandsave ; .
+
+    CREATE          reduce using rule 10 (command -> commandsave ; .)
+    SHOW            reduce using rule 10 (command -> commandsave ; .)
+    ALTER           reduce using rule 10 (command -> commandsave ; .)
+    COMMENT         reduce using rule 10 (command -> commandsave ; .)
+    SAVE            reduce using rule 10 (command -> commandsave ; .)
+    SELECT          reduce using rule 10 (command -> commandsave ; .)
+    DROP            reduce using rule 10 (command -> commandsave ; .)
+    LOAD            reduce using rule 10 (command -> commandsave ; .)
+    $end            reduce using rule 10 (command -> commandsave ; .)
+    END             reduce using rule 10 (command -> commandsave ; .)
+
+
+state 29
+
+    (11) command -> commandselect ; .
+
+    CREATE          reduce using rule 11 (command -> commandselect ; .)
+    SHOW            reduce using rule 11 (command -> commandselect ; .)
+    ALTER           reduce using rule 11 (command -> commandselect ; .)
+    COMMENT         reduce using rule 11 (command -> commandselect ; .)
+    SAVE            reduce using rule 11 (command -> commandselect ; .)
+    SELECT          reduce using rule 11 (command -> commandselect ; .)
+    DROP            reduce using rule 11 (command -> commandselect ; .)
+    LOAD            reduce using rule 11 (command -> commandselect ; .)
+    $end            reduce using rule 11 (command -> commandselect ; .)
+    END             reduce using rule 11 (command -> commandselect ; .)
+
+
+state 30
+
+    (12) command -> commanddrop ; .
+
+    CREATE          reduce using rule 12 (command -> commanddrop ; .)
+    SHOW            reduce using rule 12 (command -> commanddrop ; .)
+    ALTER           reduce using rule 12 (command -> commanddrop ; .)
+    COMMENT         reduce using rule 12 (command -> commanddrop ; .)
+    SAVE            reduce using rule 12 (command -> commanddrop ; .)
+    SELECT          reduce using rule 12 (command -> commanddrop ; .)
+    DROP            reduce using rule 12 (command -> commanddrop ; .)
+    LOAD            reduce using rule 12 (command -> commanddrop ; .)
+    $end            reduce using rule 12 (command -> commanddrop ; .)
+    END             reduce using rule 12 (command -> commanddrop ; .)
+
+
+state 31
+
+    (13) command -> commandload ; .
+
+    CREATE          reduce using rule 13 (command -> commandload ; .)
+    SHOW            reduce using rule 13 (command -> commandload ; .)
+    ALTER           reduce using rule 13 (command -> commandload ; .)
+    COMMENT         reduce using rule 13 (command -> commandload ; .)
+    SAVE            reduce using rule 13 (command -> commandload ; .)
+    SELECT          reduce using rule 13 (command -> commandload ; .)
+    DROP            reduce using rule 13 (command -> commandload ; .)
+    LOAD            reduce using rule 13 (command -> commandload ; .)
+    $end            reduce using rule 13 (command -> commandload ; .)
+    END             reduce using rule 13 (command -> commandload ; .)
+
+
+state 32
+
+    (15) commandcreate -> CREATE TABLE . VAR ( argument )
+    (16) commandcreate -> CREATE TABLE . VAR
+
+    VAR             shift and go to state 41
+
+
+state 33
+
+    (17) commandshow -> SHOW TABLE . VAR
+
+    VAR             shift and go to state 42
+
+
+state 34
+
+    (19) commandalter -> ALTER TABLE . VAR ADD COLUMN VAR
+    (20) commandalter -> ALTER TABLE . VAR DROP COLUMN VAR
+
+    VAR             shift and go to state 43
+
+
+state 35
+
+    (18) commanddrop -> DROP TABLE . VAR
+
+    VAR             shift and go to state 44
+
+
+state 36
+
+    (21) commandcomment -> COMMENT ON . TABLE VAR IS comment
+
+    TABLE           shift and go to state 45
+
+
+state 37
+
+    (22) commandsave -> SAVE TABLE . VAR AS csvfile
+
+    VAR             shift and go to state 46
+
+
+state 38
+
+    (23) commandselect -> SELECT VAR . FROM VAR
+    (24) commandselect -> SELECT VAR . FROM VAR wherecomparison
+
+    FROM            shift and go to state 47
+
+
+state 39
+
+    (14) commandload -> LOAD TABLE . VAR FROM csvfile
+
+    VAR             shift and go to state 48
+
+
+state 40
+
+    (3) procedurecommand -> PROCEDURE VAR DO . multicommand END ;
+    (4) multicommand -> . command
+    (5) multicommand -> . multicommand command
+    (6) command -> . commandcreate ;
+    (7) command -> . commandshow ;
+    (8) command -> . commandalter ;
+    (9) command -> . commandcomment ;
+    (10) command -> . commandsave ;
+    (11) command -> . commandselect ;
+    (12) command -> . commanddrop ;
+    (13) command -> . commandload ;
+    (15) commandcreate -> . CREATE TABLE VAR ( argument )
+    (16) commandcreate -> . CREATE TABLE VAR
+    (17) commandshow -> . SHOW TABLE VAR
+    (19) commandalter -> . ALTER TABLE VAR ADD COLUMN VAR
+    (20) commandalter -> . ALTER TABLE VAR DROP COLUMN VAR
+    (21) commandcomment -> . COMMENT ON TABLE VAR IS comment
+    (22) commandsave -> . SAVE TABLE VAR AS csvfile
+    (23) commandselect -> . SELECT VAR FROM VAR
+    (24) commandselect -> . SELECT VAR FROM VAR wherecomparison
+    (18) commanddrop -> . DROP TABLE VAR
+    (14) commandload -> . LOAD TABLE VAR FROM csvfile
+
+    CREATE          shift and go to state 14
+    SHOW            shift and go to state 15
+    ALTER           shift and go to state 16
+    COMMENT         shift and go to state 18
+    SAVE            shift and go to state 19
+    SELECT          shift and go to state 20
+    DROP            shift and go to state 17
+    LOAD            shift and go to state 21
+
+    multicommand                   shift and go to state 49
+    command                        shift and go to state 5
+    commandcreate                  shift and go to state 6
+    commandshow                    shift and go to state 7
+    commandalter                   shift and go to state 8
+    commandcomment                 shift and go to state 9
+    commandsave                    shift and go to state 10
+    commandselect                  shift and go to state 11
+    commanddrop                    shift and go to state 12
+    commandload                    shift and go to state 13
+
+state 41
+
+    (15) commandcreate -> CREATE TABLE VAR . ( argument )
+    (16) commandcreate -> CREATE TABLE VAR .
+
+    (               shift and go to state 50
+    ;               reduce using rule 16 (commandcreate -> CREATE TABLE VAR .)
+
+
+state 42
+
+    (17) commandshow -> SHOW TABLE VAR .
+
+    ;               reduce using rule 17 (commandshow -> SHOW TABLE VAR .)
+
+
+state 43
+
+    (19) commandalter -> ALTER TABLE VAR . ADD COLUMN VAR
+    (20) commandalter -> ALTER TABLE VAR . DROP COLUMN VAR
+
+    ADD             shift and go to state 51
+    DROP            shift and go to state 52
+
+
+state 44
+
+    (18) commanddrop -> DROP TABLE VAR .
+
+    ;               reduce using rule 18 (commanddrop -> DROP TABLE VAR .)
+
+
+state 45
+
+    (21) commandcomment -> COMMENT ON TABLE . VAR IS comment
+
+    VAR             shift and go to state 53
+
+
+state 46
+
+    (22) commandsave -> SAVE TABLE VAR . AS csvfile
+
+    AS              shift and go to state 54
+
+
+state 47
+
+    (23) commandselect -> SELECT VAR FROM . VAR
+    (24) commandselect -> SELECT VAR FROM . VAR wherecomparison
+
+    VAR             shift and go to state 55
+
+
+state 48
+
+    (14) commandload -> LOAD TABLE VAR . FROM csvfile
+
+    FROM            shift and go to state 56
+
+
+state 49
+
+    (3) procedurecommand -> PROCEDURE VAR DO multicommand . END ;
+    (5) multicommand -> multicommand . command
+    (6) command -> . commandcreate ;
+    (7) command -> . commandshow ;
+    (8) command -> . commandalter ;
+    (9) command -> . commandcomment ;
+    (10) command -> . commandsave ;
+    (11) command -> . commandselect ;
+    (12) command -> . commanddrop ;
+    (13) command -> . commandload ;
+    (15) commandcreate -> . CREATE TABLE VAR ( argument )
+    (16) commandcreate -> . CREATE TABLE VAR
+    (17) commandshow -> . SHOW TABLE VAR
+    (19) commandalter -> . ALTER TABLE VAR ADD COLUMN VAR
+    (20) commandalter -> . ALTER TABLE VAR DROP COLUMN VAR
+    (21) commandcomment -> . COMMENT ON TABLE VAR IS comment
+    (22) commandsave -> . SAVE TABLE VAR AS csvfile
+    (23) commandselect -> . SELECT VAR FROM VAR
+    (24) commandselect -> . SELECT VAR FROM VAR wherecomparison
+    (18) commanddrop -> . DROP TABLE VAR
+    (14) commandload -> . LOAD TABLE VAR FROM csvfile
+
+    END             shift and go to state 57
+    CREATE          shift and go to state 14
+    SHOW            shift and go to state 15
+    ALTER           shift and go to state 16
+    COMMENT         shift and go to state 18
+    SAVE            shift and go to state 19
+    SELECT          shift and go to state 20
+    DROP            shift and go to state 17
+    LOAD            shift and go to state 21
+
+    command                        shift and go to state 22
+    commandcreate                  shift and go to state 6
+    commandshow                    shift and go to state 7
+    commandalter                   shift and go to state 8
+    commandcomment                 shift and go to state 9
+    commandsave                    shift and go to state 10
+    commandselect                  shift and go to state 11
+    commanddrop                    shift and go to state 12
+    commandload                    shift and go to state 13
+
+state 50
+
+    (15) commandcreate -> CREATE TABLE VAR ( . argument )
+    (25) argument -> . subargument
+    (26) argument -> .
+    (27) argument -> . argument , subargument
+    (28) subargument -> . VAR VAR ( NUMBER )
+
+    )               reduce using rule 26 (argument -> .)
+    ,               reduce using rule 26 (argument -> .)
+    VAR             shift and go to state 58
+
+    argument                       shift and go to state 59
+    subargument                    shift and go to state 60
+
+state 51
+
+    (19) commandalter -> ALTER TABLE VAR ADD . COLUMN VAR
+
+    COLUMN          shift and go to state 61
+
+
+state 52
+
+    (20) commandalter -> ALTER TABLE VAR DROP . COLUMN VAR
+
+    COLUMN          shift and go to state 62
+
+
+state 53
+
+    (21) commandcomment -> COMMENT ON TABLE VAR . IS comment
+
+    IS              shift and go to state 63
+
+
+state 54
+
+    (22) commandsave -> SAVE TABLE VAR AS . csvfile
+
+    csvfile         shift and go to state 64
+
+
+state 55
+
+    (23) commandselect -> SELECT VAR FROM VAR .
+    (24) commandselect -> SELECT VAR FROM VAR . wherecomparison
+    (30) wherecomparison -> . WHERE COMPARISON
+    (31) wherecomparison -> . WHERE COMPARISON ORAND COMPARISON
+    (32) wherecomparison -> .
+
+  ! reduce/reduce conflict for ; resolved using rule 23 (commandselect -> SELECT VAR FROM VAR .)
+    ;               reduce using rule 23 (commandselect -> SELECT VAR FROM VAR .)
+    WHERE           shift and go to state 66
+
+  ! ;               [ reduce using rule 32 (wherecomparison -> .) ]
+
+    wherecomparison                shift and go to state 65
+
+state 56
+
+    (14) commandload -> LOAD TABLE VAR FROM . csvfile
+
+    csvfile         shift and go to state 67
+
+
+state 57
+
+    (3) procedurecommand -> PROCEDURE VAR DO multicommand END . ;
+
+    ;               shift and go to state 68
+
+
+state 58
+
+    (28) subargument -> VAR . VAR ( NUMBER )
+
+    VAR             shift and go to state 69
+
+
+state 59
+
+    (15) commandcreate -> CREATE TABLE VAR ( argument . )
+    (27) argument -> argument . , subargument
+
+    )               shift and go to state 70
+    ,               shift and go to state 71
+
+
+state 60
+
+    (25) argument -> subargument .
+
+    )               reduce using rule 25 (argument -> subargument .)
+    ,               reduce using rule 25 (argument -> subargument .)
+
+
+state 61
+
+    (19) commandalter -> ALTER TABLE VAR ADD COLUMN . VAR
+
+    VAR             shift and go to state 72
+
+
+state 62
+
+    (20) commandalter -> ALTER TABLE VAR DROP COLUMN . VAR
+
+    VAR             shift and go to state 73
+
+
+state 63
+
+    (21) commandcomment -> COMMENT ON TABLE VAR IS . comment
+    (29) comment -> . COMMASTRING
+
+    COMMASTRING     shift and go to state 75
+
+    comment                        shift and go to state 74
+
+state 64
+
+    (22) commandsave -> SAVE TABLE VAR AS csvfile .
+
+    ;               reduce using rule 22 (commandsave -> SAVE TABLE VAR AS csvfile .)
+
+
+state 65
+
+    (24) commandselect -> SELECT VAR FROM VAR wherecomparison .
+
+    ;               reduce using rule 24 (commandselect -> SELECT VAR FROM VAR wherecomparison .)
+
+
+state 66
+
+    (30) wherecomparison -> WHERE . COMPARISON
+    (31) wherecomparison -> WHERE . COMPARISON ORAND COMPARISON
+    (33) COMPARISON -> . VAR > NUMBER
+    (34) COMPARISON -> . VAR < NUMBER
+    (35) COMPARISON -> . VAR DIFFERENT NUMBER
+    (36) COMPARISON -> . VAR GREATEREQUALTHAN NUMBER
+    (37) COMPARISON -> . VAR LESSEQUALTHAN NUMBER
+
+    VAR             shift and go to state 77
+
+    COMPARISON                     shift and go to state 76
+
+state 67
+
+    (14) commandload -> LOAD TABLE VAR FROM csvfile .
+
+    ;               reduce using rule 14 (commandload -> LOAD TABLE VAR FROM csvfile .)
+
+
+state 68
+
+    (3) procedurecommand -> PROCEDURE VAR DO multicommand END ; .
+
+    $end            reduce using rule 3 (procedurecommand -> PROCEDURE VAR DO multicommand END ; .)
+
+
+state 69
+
+    (28) subargument -> VAR VAR . ( NUMBER )
+
+    (               shift and go to state 78
+
+
+state 70
+
+    (15) commandcreate -> CREATE TABLE VAR ( argument ) .
+
+    ;               reduce using rule 15 (commandcreate -> CREATE TABLE VAR ( argument ) .)
+
+
+state 71
+
+    (27) argument -> argument , . subargument
+    (28) subargument -> . VAR VAR ( NUMBER )
+
+    VAR             shift and go to state 58
+
+    subargument                    shift and go to state 79
+
+state 72
+
+    (19) commandalter -> ALTER TABLE VAR ADD COLUMN VAR .
+
+    ;               reduce using rule 19 (commandalter -> ALTER TABLE VAR ADD COLUMN VAR .)
+
+
+state 73
+
+    (20) commandalter -> ALTER TABLE VAR DROP COLUMN VAR .
+
+    ;               reduce using rule 20 (commandalter -> ALTER TABLE VAR DROP COLUMN VAR .)
+
+
+state 74
+
+    (21) commandcomment -> COMMENT ON TABLE VAR IS comment .
+
+    ;               reduce using rule 21 (commandcomment -> COMMENT ON TABLE VAR IS comment .)
+
+
+state 75
+
+    (29) comment -> COMMASTRING .
+
+    ;               reduce using rule 29 (comment -> COMMASTRING .)
+
+
+state 76
+
+    (30) wherecomparison -> WHERE COMPARISON .
+    (31) wherecomparison -> WHERE COMPARISON . ORAND COMPARISON
+    (38) ORAND -> . OR
+    (39) ORAND -> . AND
+
+    ;               reduce using rule 30 (wherecomparison -> WHERE COMPARISON .)
+    OR              shift and go to state 81
+    AND             shift and go to state 82
+
+    ORAND                          shift and go to state 80
+
+state 77
+
+    (33) COMPARISON -> VAR . > NUMBER
+    (34) COMPARISON -> VAR . < NUMBER
+    (35) COMPARISON -> VAR . DIFFERENT NUMBER
+    (36) COMPARISON -> VAR . GREATEREQUALTHAN NUMBER
+    (37) COMPARISON -> VAR . LESSEQUALTHAN NUMBER
+
+    >               shift and go to state 83
+    <               shift and go to state 84
+    DIFFERENT       shift and go to state 85
+    GREATEREQUALTHAN shift and go to state 86
+    LESSEQUALTHAN   shift and go to state 87
+
+
+state 78
+
+    (28) subargument -> VAR VAR ( . NUMBER )
+
+    NUMBER          shift and go to state 88
+
+
+state 79
+
+    (27) argument -> argument , subargument .
+
+    )               reduce using rule 27 (argument -> argument , subargument .)
+    ,               reduce using rule 27 (argument -> argument , subargument .)
+
+
+state 80
+
+    (31) wherecomparison -> WHERE COMPARISON ORAND . COMPARISON
+    (33) COMPARISON -> . VAR > NUMBER
+    (34) COMPARISON -> . VAR < NUMBER
+    (35) COMPARISON -> . VAR DIFFERENT NUMBER
+    (36) COMPARISON -> . VAR GREATEREQUALTHAN NUMBER
+    (37) COMPARISON -> . VAR LESSEQUALTHAN NUMBER
+
+    VAR             shift and go to state 77
+
+    COMPARISON                     shift and go to state 89
+
+state 81
+
+    (38) ORAND -> OR .
+
+    VAR             reduce using rule 38 (ORAND -> OR .)
+
+
+state 82
+
+    (39) ORAND -> AND .
+
+    VAR             reduce using rule 39 (ORAND -> AND .)
+
+
+state 83
+
+    (33) COMPARISON -> VAR > . NUMBER
+
+    NUMBER          shift and go to state 90
+
+
+state 84
+
+    (34) COMPARISON -> VAR < . NUMBER
+
+    NUMBER          shift and go to state 91
+
+
+state 85
+
+    (35) COMPARISON -> VAR DIFFERENT . NUMBER
+
+    NUMBER          shift and go to state 92
+
+
+state 86
+
+    (36) COMPARISON -> VAR GREATEREQUALTHAN . NUMBER
+
+    NUMBER          shift and go to state 93
+
+
+state 87
+
+    (37) COMPARISON -> VAR LESSEQUALTHAN . NUMBER
+
+    NUMBER          shift and go to state 94
+
+
+state 88
+
+    (28) subargument -> VAR VAR ( NUMBER . )
+
+    )               shift and go to state 95
+
+
+state 89
+
+    (31) wherecomparison -> WHERE COMPARISON ORAND COMPARISON .
+
+    ;               reduce using rule 31 (wherecomparison -> WHERE COMPARISON ORAND COMPARISON .)
+
+
+state 90
+
+    (33) COMPARISON -> VAR > NUMBER .
+
+    OR              reduce using rule 33 (COMPARISON -> VAR > NUMBER .)
+    AND             reduce using rule 33 (COMPARISON -> VAR > NUMBER .)
+    ;               reduce using rule 33 (COMPARISON -> VAR > NUMBER .)
+
+
+state 91
+
+    (34) COMPARISON -> VAR < NUMBER .
+
+    OR              reduce using rule 34 (COMPARISON -> VAR < NUMBER .)
+    AND             reduce using rule 34 (COMPARISON -> VAR < NUMBER .)
+    ;               reduce using rule 34 (COMPARISON -> VAR < NUMBER .)
+
+
+state 92
+
+    (35) COMPARISON -> VAR DIFFERENT NUMBER .
+
+    OR              reduce using rule 35 (COMPARISON -> VAR DIFFERENT NUMBER .)
+    AND             reduce using rule 35 (COMPARISON -> VAR DIFFERENT NUMBER .)
+    ;               reduce using rule 35 (COMPARISON -> VAR DIFFERENT NUMBER .)
+
+
+state 93
+
+    (36) COMPARISON -> VAR GREATEREQUALTHAN NUMBER .
+
+    OR              reduce using rule 36 (COMPARISON -> VAR GREATEREQUALTHAN NUMBER .)
+    AND             reduce using rule 36 (COMPARISON -> VAR GREATEREQUALTHAN NUMBER .)
+    ;               reduce using rule 36 (COMPARISON -> VAR GREATEREQUALTHAN NUMBER .)
+
+
+state 94
+
+    (37) COMPARISON -> VAR LESSEQUALTHAN NUMBER .
+
+    OR              reduce using rule 37 (COMPARISON -> VAR LESSEQUALTHAN NUMBER .)
+    AND             reduce using rule 37 (COMPARISON -> VAR LESSEQUALTHAN NUMBER .)
+    ;               reduce using rule 37 (COMPARISON -> VAR LESSEQUALTHAN NUMBER .)
+
+
+state 95
+
+    (28) subargument -> VAR VAR ( NUMBER ) .
+
+    )               reduce using rule 28 (subargument -> VAR VAR ( NUMBER ) .)
+    ,               reduce using rule 28 (subargument -> VAR VAR ( NUMBER ) .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: reduce/reduce conflict in state 55 resolved using rule (commandselect -> SELECT VAR FROM VAR)
+WARNING: rejected rule (wherecomparison -> <empty>) in state 55
+WARNING: Rule (wherecomparison -> <empty>) is never reduced
